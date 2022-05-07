@@ -63,31 +63,30 @@ public class WaveSpawner : MonoBehaviour
         }
 
         //ENEMY SPAWN
-        //Instantiate(waves[waveIndex].enemy, GetSpawnPointMinDistance(), Quaternion.identity); //enemy, spawnPos, spawnRot
+        Instantiate(waves[waveIndex].enemy, GetSpawnPointMinDistance(), Quaternion.identity); //enemy, spawnPos, spawnRot
         numberEnemySpawn++; // then it will increment until the if check above is false
     }
 
-    //Vector3 GetSpawnPointMinDistance()
-    //{
-    //    List<Transform> _usableSpawn = new List<Transform>();
+    Vector3 GetSpawnPointMinDistance()
+    {
+        List<Transform> _usableSpawn = new List<Transform>();
 
-    //    // using player position, doesn't change, so created here
-    //    Vector3 _playerLoc = GameManager.Instance.GetPlayer).transform.position;
+        // using player position, doesn't change, so created here
+        Vector3 _playerLoc = GameManager.Instance.GetPlayer().transform.position;
 
-    //    foreach(Transform point in spawnPoints) // for every Spawn Points
-    //    {
-    //        // getting distance between point and current spawn pos
-    //        float newDistance = Vector3.Distance(point.position, _playerLoc);
+        foreach (Transform point in spawnPoints) // for every Spawn Points
+        {
+            // getting distance between point and current spawn pos
+            float newDistance = Vector3.Distance(point.position, _playerLoc);
 
-    //        if(newDistance > minDistance) // if a spawner is further than the minDistance. Add it to list
-    //        {
-    //            _usableSpawn.Add(point);
-    //        }
+            if (newDistance > minDistance) // if a spawner is further than the minDistance. Add it to list
+            {
+                _usableSpawn.Add(point);
+            }
+        }
+        //randomize between 0 and the usable spawn list
+        int indexToUse = Random.Range(0, _usableSpawn.Count - 1);
 
-    //        //randomize between 0 and the usable spawn list
-    //        int indexToUse = Random.Range(0, _usableSpawn.Count - 1);
-
-    //        return _usableSpawn[indexToUse].transform.position; // return the chosen spawn position
-    //    }
-    //}
+        return _usableSpawn[indexToUse].transform.position; // return chosen spawn point
+    }
 }
