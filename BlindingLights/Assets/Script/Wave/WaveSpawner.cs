@@ -63,7 +63,7 @@ public class WaveSpawner : MonoBehaviour
         }
 
         //ENEMY SPAWN
-        Instantiate(waves[waveIndex].enemy, GetSpawnPointMinDistance(), Quaternion.identity); //enemy, spawnPos, spawnRot
+        //Instantiate(waves[waveIndex].enemy, GetSpawnPointMinDistance(), Quaternion.identity); //enemy, spawnPos, spawnRot
         numberEnemySpawn++; // then it will increment until the if check above is false
     }
 
