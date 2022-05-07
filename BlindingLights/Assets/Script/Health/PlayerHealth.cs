@@ -8,7 +8,7 @@ public class PlayerHealth : HealthComponent
     {
         Destroy(gameObject);
 
-        //GameManager.Instance.Death(); // Call Death
+        GameManager.Instance.Death(); // Call Death
         base.Death();
     }
 }
