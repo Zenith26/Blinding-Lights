@@ -85,7 +85,7 @@ public class WaveSpawner : MonoBehaviour
             }
         }
         //randomize between 0 and the usable spawn list
-        int indexToUse = Random.Range(0, _usableSpawn.Count - 1);
+        int indexToUse = Random.Range(0, _usableSpawn.Count); // -1 won't return the highest value
 
         return _usableSpawn[indexToUse].transform.position; // return chosen spawn point
     }
