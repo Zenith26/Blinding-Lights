@@ -34,15 +34,6 @@ public class HealthComponent : MonoBehaviour
 
     protected virtual void Death()
     {
-        if(OnDeath != null)
-        {
-            //AI Base
-            OnDeath?.Invoke();
-            Debug.Log("Player is Dead");
-        }
-        else
-        {
-            Debug.LogError(name + " No functions bound to OnDeath Delegate");
-        }
+
     }
 }

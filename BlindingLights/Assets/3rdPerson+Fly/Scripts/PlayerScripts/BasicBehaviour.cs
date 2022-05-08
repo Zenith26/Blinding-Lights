@@ -44,6 +44,8 @@ public class BasicBehaviour : MonoBehaviour
 	// Get current default behaviour.
 	public int GetDefaultBehaviour {  get { return defaultBehaviour; } }
 
+	public static BasicBehaviour playerController;
+
 	void Awake ()
 	{
 		// Set up the references.
@@ -54,6 +56,8 @@ public class BasicBehaviour : MonoBehaviour
 		vFloat = Animator.StringToHash("V");
 		camScript = playerCamera.GetComponent<ThirdPersonOrbitCamBasic> ();
 		rBody = GetComponent<Rigidbody> ();
+
+		playerController = this;
 
 		// Grounded verification variables.
 		groundedBool = Animator.StringToHash("Grounded");
