@@ -45,7 +45,7 @@ public class WaveSpawner : MonoBehaviour
         {
             waveIndex++;
         }
-        Debug.Log("Wave: " + waves[waveIndex].name);
+        //Debug.Log("Wave: " + waves[waveIndex].name);
 
                     //function name   //time takes to spawn first one    // the next time takes to spawn
         InvokeRepeating("SpawnEnemy", waves[waveIndex].rate, waves[waveIndex].rate);
@@ -71,9 +71,15 @@ public class WaveSpawner : MonoBehaviour
     {
         List<Transform> _usableSpawn = new List<Transform>();
 
+        // if player loc is null that means that player has been killed
+        if (GameManager.Instance.GetPlayer() == null)
+        {
+            gameObject.SetActive(false); // deactivate the gameObject
+        }
+
         // using player position, doesn't change, so created here
         Vector3 _playerLoc = GameManager.Instance.GetPlayer().transform.position;
-
+        
         foreach (Transform point in spawnPoints) // for every Spawn Points
         {
             // getting distance between point and current spawn pos
