@@ -25,11 +25,13 @@ public class GameManager : MonoBehaviour
         } else if(Instance != null){ // is there is actually an instance. Destroy that one
             Destroy(gameObject);
         }
+
+        PlayerSpawn(); // had to call awake, because AIBase can't get Player references
     }
 
     private void Start()
     {
-        PlayerSpawn();
+        
     }
 
     void PlayerSpawn()
