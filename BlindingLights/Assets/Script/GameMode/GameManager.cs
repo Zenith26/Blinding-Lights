@@ -44,8 +44,22 @@ public class GameManager : MonoBehaviour
         Player = _Player;
     }
 
+    // THIS IS FOR PLAYER WHEN THEY DIE. Called from PlayerHealth script
     public void Death()
     {
-        // THIS IS FOR PLAYER WHEN THEY DIE
+        //Remove Camera from the player
+        Transform cameraRemove = Player.transform.Find("Main Camera");
+        cameraRemove.parent = null;
+
+        // Get MainCamera references
+        GameObject mainCamera = cameraRemove.gameObject;
+
+        // Enable the camera components to show the scene
+        Camera camera = mainCamera.GetComponent<Camera>();
+        camera.enabled = true;
+
+        // Disable the Orbit Cam script from the main camera so that our mouse got the control
+        ThirdPersonOrbitCamBasic OrbitCam = mainCamera.GetComponent<ThirdPersonOrbitCamBasic>();
+        OrbitCam.enabled = false;
     }
 }
