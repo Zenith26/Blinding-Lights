@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             GameplayStatics.DealDamage(collision.gameObject, 100);
+            Destroy(gameObject);
         }
     }
 
