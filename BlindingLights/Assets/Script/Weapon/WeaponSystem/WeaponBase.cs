@@ -23,6 +23,8 @@ public class WeaponBase : MonoBehaviour
 
     float timeTillCanFire = 0; // check for how long player can shoot again
 
+    [SerializeField] GameObject FirePoint; 
+
     //private AudioSource weaponSound;// the sound for the gun
 
     private void Start()
@@ -32,11 +34,12 @@ public class WeaponBase : MonoBehaviour
 
         if (transform.parent.gameObject) // if there is a parent that takes WeaponBase, then set it to Owner
         {
-            Owner = transform.parent.gameObject;
+            Owner = transform.parent.gameObject; // Get Player as the Owner
         }
+
     }
 
-    public void TriggerPulled()
+    public void TriggerPulled(GameObject _weaponSpawnPoint)
     {
         // checking to make sure we can fire
         if (!CanFire())
@@ -46,6 +49,7 @@ public class WeaponBase : MonoBehaviour
 
         //Invoke our firing at auto fire
         InvokeRepeating("FireWeapon", 0, weaponData.AdjustedFiringRate);
+        FirePoint = _weaponSpawnPoint; // Set the FirePoint from the func params
     }
 
     public void TriggerReleased()
@@ -82,8 +86,8 @@ public class WeaponBase : MonoBehaviour
         {
             return;
         }
-        //got it from ProjectileLogic()
-        ProjectileBase Bullet = Instantiate(weaponData.Projectile, weaponData.Muzzle.position, rot);
+        //got it from ProjectileLogic()                           // with Player FirePoint location
+        ProjectileBase Bullet = Instantiate(weaponData.Projectile, FirePoint.transform.position, rot);
 
         Bullet.Owner = Owner;
     }

@@ -12,7 +12,9 @@ public class WeaponComp : MonoBehaviour
     WeaponBase CurrentWeapon = null; // the current weapon in the game
 
     int CurrentWeaponIndex = 0;
-    public int storeCurrentWeapon; // for GunImage to get the current weapon references, Not using CurrentWeaponIndex since its dangerous
+    [HideInInspector] public int storeCurrentWeapon; // for GunImage to get the current weapon references, Not using CurrentWeaponIndex since its dangerous
+
+    public GameObject WeaponSpawnPoint; // Set Player Fire Point from the editor
 
     private void Start()
     {
@@ -59,8 +61,8 @@ public class WeaponComp : MonoBehaviour
 
     public void StartFire()
     {
-        //if weapon is valid, call weapon
-        CurrentWeapon?.TriggerPulled();
+        //if weapon is valid, call weapon with FirePoint references
+        CurrentWeapon?.TriggerPulled(WeaponSpawnPoint);
     }
 
     public void StopFire()
