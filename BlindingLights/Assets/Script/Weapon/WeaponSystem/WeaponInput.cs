@@ -22,7 +22,7 @@ public class WeaponInput : MonoBehaviour
         if (weaponComp)
         {
             // FIRE WEAPON
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0)) // if player press left mouse while aiming
             {
                 weaponComp.StartFire();
             }
