@@ -14,11 +14,25 @@ public class ProjectileBase : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
+        //Get Camera references
+        GameObject Player = GameManager.Instance.GetPlayer();
+        Transform playerCamera = Player.transform.Find("Main Camera");
+        
+        // Create local RaycastHit Var
+        RaycastHit hitInfo;
+
+        //Raycast to the camera
+        Physics.Raycast(playerCamera.position, playerCamera.forward, out hitInfo);
+
+        //Rotate the projectile to the raycast hit position
+        gameObject.transform.LookAt(hitInfo.point);
+
+        // Rotating the projectile also need Add Force
         //adding initial movement force                     Will not keep physics when going to other direction
         rb.AddForce(transform.forward * Velocity, ForceMode.VelocityChange);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         if(other.gameObject == Owner)
         {
