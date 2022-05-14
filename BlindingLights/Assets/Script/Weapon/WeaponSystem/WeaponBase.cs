@@ -23,9 +23,13 @@ public class WeaponBase : MonoBehaviour
 
     float timeTillCanFire = 0; // check for how long player can shoot again
 
-    [SerializeField] GameObject FirePoint; 
+    [SerializeField] GameObject FirePoint;
 
     //private AudioSource weaponSound;// the sound for the gun
+
+    //Get Player Aim (Put it here to check if player is still aiming when shoot)
+    AimBehaviourBasic aimScript; // Script
+    bool isAiming; // Is the player Aiming
 
     private void Start()
     {
@@ -37,6 +41,7 @@ public class WeaponBase : MonoBehaviour
             Owner = transform.parent.gameObject; // Get Player as the Owner
         }
 
+        aimScript = GameManager.Instance.GetPlayer().GetComponent<AimBehaviourBasic>();
     }
 
     public void TriggerPulled(GameObject _weaponSpawnPoint)
@@ -70,17 +75,21 @@ public class WeaponBase : MonoBehaviour
 
     protected virtual void FireWeapon()
     {
-        ProjectileLogic();
+        isAiming = aimScript.getIsAiming; // Get bool value if player is aiming
+        if (isAiming)
+        {
+            ProjectileLogic();
 
-        timeTillCanFire = Time.time + weaponData.AdjustedFiringRate; // Time.time will not go up if we are not shooting
+            timeTillCanFire = Time.time + weaponData.AdjustedFiringRate; // Time.time will not go up if we are not shooting
+        }
     }
 
-    protected virtual void ProjectileLogic() // TODO: USE THE MUZZLE ROTATION TO SHOOT AT RETICLE HERE
+    protected virtual void ProjectileLogic()
     {
         InstantiateBullet(weaponData.Muzzle.transform.rotation); // needs rotation so we called the rotation of the muzzle
     }
 
-    protected virtual void InstantiateBullet(Quaternion rot) // TODO: THIS IS FOR THE RAYCAST
+    protected virtual void InstantiateBullet(Quaternion rot)
     {
         if(weaponData.Projectile == null)
         {
