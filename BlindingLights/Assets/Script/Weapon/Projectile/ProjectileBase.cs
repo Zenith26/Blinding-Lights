@@ -41,9 +41,10 @@ public class ProjectileBase : MonoBehaviour
 
         if (other.gameObject.GetComponent<EnemyHealth>())
         {
+            Score.scoreValue += 10;
             GameplayStatics.DealDamage(other.gameObject, 100); // Instant Big Damage so that enemy will die from a hit
         }
-
+        
         Destroy(gameObject);
     }
 }
