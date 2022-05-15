@@ -9,25 +9,16 @@ public class HealthComponent : MonoBehaviour
     float maxHealth;
 
     public MulticastNoParams OnDeath;
-    public Image[] hearts;
-    public Sprite fullHeart;
-    public Sprite emptyHeart;
-
-    private void Update()
-    {
-        foreach(Image img in hearts)
-        {
-            img.sprite = emptyHeart;
-        }
-        for(int i =0; i< health; i++)
-        {
-            hearts[i].sprite = fullHeart;
-        }
-    }
+    public MulticastNoParams OnDamage;
+ 
+    
     private void Awake()
     {
         maxHealth = health;
+
     }
+
+   
 
     // to override, needs virtual
     public virtual void ApplyDamage(float Damage)
@@ -44,6 +35,10 @@ public class HealthComponent : MonoBehaviour
         if(health <= 0)
         {
             Death();
+        }
+        if(OnDamage != null)
+        {
+            OnDamage?.Invoke();
         }
     }
 
