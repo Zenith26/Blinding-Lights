@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthComponent : MonoBehaviour
 {
@@ -8,7 +9,21 @@ public class HealthComponent : MonoBehaviour
     float maxHealth;
 
     public MulticastNoParams OnDeath;
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
 
+    private void Update()
+    {
+        foreach(Image img in hearts)
+        {
+            img.sprite = emptyHeart;
+        }
+        for(int i =0; i< health; i++)
+        {
+            hearts[i].sprite = fullHeart;
+        }
+    }
     private void Awake()
     {
         maxHealth = health;
