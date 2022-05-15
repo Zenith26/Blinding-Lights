@@ -13,6 +13,8 @@ public class AimBehaviourBasic : GenericBehaviour
 	private int aimBool;                                                  // Animator variable related to aiming.
 	private bool aim;                                                     // Boolean to determine whether or not the player is aiming.
 
+	public bool getIsAiming;
+
 	// Start is always called after any Awake functions.
 	void Start ()
 	{
@@ -27,10 +29,12 @@ public class AimBehaviourBasic : GenericBehaviour
 		if (Input.GetAxisRaw(aimButton) != 0 && !aim)
 		{
 			StartCoroutine(ToggleAimOn());
+			getIsAiming = true;
 		}
 		else if (aim && Input.GetAxisRaw(aimButton) == 0)
 		{
 			StartCoroutine(ToggleAimOff());
+			getIsAiming = false;
 		}
 
 		// No sprinting while aiming.
