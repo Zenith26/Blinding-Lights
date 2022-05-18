@@ -5,7 +5,7 @@ public class HomeScreen : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("Main_Scene");
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame()
