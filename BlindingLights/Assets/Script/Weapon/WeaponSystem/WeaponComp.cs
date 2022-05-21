@@ -7,7 +7,7 @@ public class WeaponComp : MonoBehaviour
     GameObject Owner = null;
 
     [SerializeField] List<WeaponBase> InitialWeapons = null; // WE ADD IT ON EDITOR
-    [SerializeField] List<WeaponBase> Weapons = null; // Will set the InitialWeapons to here
+    [SerializeField] List<WeaponBase> Weapons = null; // Will set the InitialWeapons to here (MAKE SURE TO NOT HAVE ANY INDEX IN THE INSPECTOR, EVEN IF ITS EMPTY IT COUNTS AS INDEX 0.
 
     WeaponBase CurrentWeapon = null; // the current weapon in the game
 
@@ -21,6 +21,7 @@ public class WeaponComp : MonoBehaviour
         Owner = gameObject;
 
         SpawnWeapon();
+        
     }
 
     void SpawnWeapon()
