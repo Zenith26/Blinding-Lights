@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1357
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 421}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 93
+  controlID: 47
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -278,7 +278,7 @@ MonoBehaviour:
   - {fileID: 19}
   - {fileID: 20}
   m_Selected: 0
-  m_LastSelected: 2
+  m_LastSelected: 1
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -406,7 +406,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 0efbffff
+      m_ExpandedIDs: 46f3ffff36fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -656,9 +656,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0, y: 2.63, z: -11.81}
+    m_Target: {x: 0.30972064, y: 2.113708, z: -13.354685}
     speed: 2
-    m_Value: {x: -0.00000027091073, y: 2.63, z: -11.810001}
+    m_Value: {x: -0.53475803, y: 1.8517803, z: 0.42678437}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -705,13 +705,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.020287659, y: 0.9785263, z: -0.16777112, w: 0.1178934}
+    m_Target: {x: -0.005311007, y: 0.9872037, z: -0.1555821, w: -0.034167245}
     speed: 2
-    m_Value: {x: 0.019956967, y: 0.9786368, z: -0.16930178, w: 0.11492914}
+    m_Value: {x: 0.15115835, y: 0.7475632, z: -0.1819498, w: 0.6206405}
   m_Size:
     m_Target: 2.3834462
     speed: 2
-    m_Value: 2.2808099
+    m_Value: 0.4991743
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -863,22 +863,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Weapons/WeaponSystem
+    - Assets/Prefabs/Weapons/Projectile
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs/Weapons/WeaponSystem
+  - Assets/Prefabs/Weapons/Projectile
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\14076\OneDrive - Full Sail University\Documents\GitHub\Blinding-Lights\BlindingLights
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 61}
-    m_SelectedIDs: f8610000
-    m_LastClickedID: 25080
-    m_ExpandedIDs: 0000000086610000ae610000ca61000000ca9a3b
+    scrollPos: {x: 0, y: 205}
+    m_SelectedIDs: bc610000
+    m_LastClickedID: 25020
+    m_ExpandedIDs: 0000000082610000aa610000b0610000ba610000f061000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -906,7 +906,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000086610000
+    m_ExpandedIDs: 0000000082610000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1027,7 +1027,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 620
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -1054,9 +1054,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1983
+    x: 1986
     y: 73
-    width: 576
+    width: 573
     height: 1286
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:

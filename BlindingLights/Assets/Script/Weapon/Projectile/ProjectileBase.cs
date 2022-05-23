@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ProjectileBase : MonoBehaviour
 {
-    Rigidbody rb = null;
+    [HideInInspector] public Rigidbody rb = null;
 
     [SerializeField] float Velocity = 20; // higher the velocity, the faster the projectile is
 
     public GameObject Owner = null; // set from WeaponBase
 
-    private void Awake()
+    protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
         MoveTowardsReticle();
@@ -35,7 +35,7 @@ public class ProjectileBase : MonoBehaviour
         gameObject.transform.LookAt(hitInfo.point);
     }
 
-    private void OnCollisionEnter(Collision other)
+    protected virtual void OnCollisionEnter(Collision other)
     {
         if(other.gameObject == Owner)
         {
