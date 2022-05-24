@@ -16,6 +16,7 @@ public class PlayerHealthUI : MonoBehaviour
         phealth = GameObject.FindObjectOfType<PlayerHealth>();
         Modifyhealth(phealth.health);
         phealth.OnDamage += DamageHealth;
+
     }
 
     void Modifyhealth(float playerhealth)
