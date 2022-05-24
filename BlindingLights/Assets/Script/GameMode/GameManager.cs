@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
         if(Instance == null) 
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // will not destroy this gameObject when loading new scene
+            //DontDestroyOnLoad(gameObject); // will not destroy this gameObject when loading new scene
         } else if(Instance != null){ // is there is actually an instance. Destroy that one
             Destroy(gameObject);
         }
