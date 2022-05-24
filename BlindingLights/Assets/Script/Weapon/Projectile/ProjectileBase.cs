@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class ProjectileBase : MonoBehaviour
 {
-    Rigidbody rb = null;
+    [HideInInspector] public Rigidbody rb = null;
 
     [SerializeField] float Velocity = 20; // higher the velocity, the faster the projectile is
 
     public GameObject Owner = null; // set from WeaponBase
 
-    private void Awake()
+    protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        MoveTowardsReticle();
+        // Rotating the projectile also need Add Force
+        //adding initial movement force                     Will not keep physics when going to other direction
+        rb.AddForce(transform.forward * Velocity, ForceMode.VelocityChange);
+    }
 
+    public virtual void MoveTowardsReticle()
+    {
         //Get Camera references
         GameObject Player = GameManager.Instance.GetPlayer();
         Transform playerCamera = Player.transform.Find("Main Camera");
-        
+
         // Create local RaycastHit Var
         RaycastHit hitInfo;
 
@@ -26,13 +33,9 @@ public class ProjectileBase : MonoBehaviour
 
         //Rotate the projectile to the raycast hit position
         gameObject.transform.LookAt(hitInfo.point);
-
-        // Rotating the projectile also need Add Force
-        //adding initial movement force                     Will not keep physics when going to other direction
-        rb.AddForce(transform.forward * Velocity, ForceMode.VelocityChange);
     }
 
-    private void OnCollisionEnter(Collision other)
+    protected virtual void OnCollisionEnter(Collision other)
     {
         if(other.gameObject == Owner)
         {

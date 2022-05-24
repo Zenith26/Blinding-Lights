@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHealthUI : MonoBehaviour
 {
+
     PlayerHealth phealth;
     public Image[] hearts;
     public Sprite fullHeart;
@@ -15,6 +16,7 @@ public class PlayerHealthUI : MonoBehaviour
         phealth = GameObject.FindObjectOfType<PlayerHealth>();
         Modifyhealth(phealth.health);
         phealth.OnDamage += DamageHealth;
+
     }
 
     void Modifyhealth(float playerhealth)

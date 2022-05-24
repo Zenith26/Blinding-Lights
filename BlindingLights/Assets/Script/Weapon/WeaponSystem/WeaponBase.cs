@@ -14,6 +14,8 @@ public class WeaponBase : MonoBehaviour
         public Transform Muzzle = null; // the muzzle (Gun) from the WeaponBase
         public float firingRate = 500; // rate of fires per shot
         public ProjectileBase Projectile; // the projectile (bullet)
+        public int projectileCount = 1; // amounts of bullet in one shot (shotgun will have more than 5)
+        public float anglePerRound = 0.5f; // the angle of each projectileCount
 
         [HideInInspector]
         public float AdjustedFiringRate = 0; // this will adjust the fire rate for the game
@@ -86,7 +88,37 @@ public class WeaponBase : MonoBehaviour
 
     protected virtual void ProjectileLogic()
     {
-        InstantiateBullet(weaponData.Muzzle.transform.rotation); // needs rotation so we called the rotation of the muzzle
+        int numProjectiles = weaponData.projectileCount;
+
+        if (numProjectiles <= 1) // if number projectile is 1 or less
+        {
+            InstantiateBullet(weaponData.Muzzle.transform.rotation); // needs rotation so we called the rotation of the muzzle
+        }
+        else
+        {
+            //is the number of projectiles odd or even
+            bool even = numProjectiles % 2 == 0;
+            //Calculate the spacing per round based on odd / even number of projectiles
+            int adjustedProjNum = even ? numProjectiles / 2 - numProjectiles : -(numProjectiles / 2 - 1) - 1;
+
+            for (int currentRound = 0; currentRound < numProjectiles; currentRound++)
+            {
+                //takes the muzzle rot to this vector
+                Vector3 adjustedRot = weaponData.Muzzle.transform.rotation.eulerAngles;
+                int bulletMod = adjustedProjNum + currentRound;
+
+                //muzzle rot += spacing per round * each projectile angle
+                adjustedRot.y += bulletMod * weaponData.anglePerRound;
+
+                //additional math if the projectile is even, does not work in the adjusted projectile number line
+                if (even)
+                {
+                    adjustedRot.y += weaponData.anglePerRound / 2;
+                }
+
+                InstantiateBullet(Quaternion.Euler(adjustedRot));
+            }
+        }
     }
 
     protected virtual void InstantiateBullet(Quaternion rot)
