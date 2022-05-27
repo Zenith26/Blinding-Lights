@@ -23,7 +23,7 @@ public class HealthComponent : MonoBehaviour
     // to override, needs virtual
     public virtual void ApplyDamage(float Damage)
     {
-        if(Damage == 0 || health <= 0)
+        if(Damage <= 0 || health <= 0)
         {
             return; // if there are no damage or health is 0. Return
         }

@@ -17,7 +17,7 @@ public class HpPickup : MonoBehaviour
         if(phealth.health < 5)
         {
             Destroy(gameObject);
-            GameplayStatics.DealDamage(other.gameObject, -1);
+            phealth.health = phealth.health + healthbonus;
         }
     }
 }
