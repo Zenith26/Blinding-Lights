@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HealthComponent : MonoBehaviour
 {
-    public float health = 3;
+    public float health = 5;
     float maxHealth;
 
     public MulticastNoParams OnDeath;
