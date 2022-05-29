@@ -41,7 +41,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Settings()
     {
-        SceneManager.LoadScene("HomeScreen");
+        SceneManager.LoadScene("DickyScene");
         Time.timeScale = 1f;
     }
 
