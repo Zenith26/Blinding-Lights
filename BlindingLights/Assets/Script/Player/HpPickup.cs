@@ -14,7 +14,7 @@ public class HpPickup : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(phealth.health < 3)
+        if(phealth.health < 5)
         {
             Destroy(gameObject);
             GameplayStatics.DealDamage(other.gameObject, -1);
